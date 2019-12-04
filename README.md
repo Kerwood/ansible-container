@@ -15,14 +15,6 @@ docker run --rm -it \
     --entrypoint=ansible \
     ansible all -m ping --inventory=hosts.ini
 ```
-Or create an alias.
-```
-alias ansible='docker run --rm -it -v $(pwd):/ansible/playbooks -v ~/.ssh/id_rsa:/root/.ssh/id_rsa --entrypoint=ansible ansible'
-```
-And run like this.
-```
-ansible all -m ping --inventory-file=hosts
-```
 
 ### Ansible Playbook
 Same principle with the `ansible-playbook` command. Just remove the `--entrypoint=ansible` paramenter.
@@ -39,4 +31,9 @@ With these you can use the ansible container as normal commands. The container b
 ```
 alias ansible='docker run --rm -it -v $(pwd):/ansible/playbooks -v ~/.ssh:/root/.ssh --entrypoint=ansible ansible'
 alias ansible-playbook='docker run --rm -it -v $(pwd):/ansible/playbooks -v ~/.ssh:/root/.ssh  ansible'
+```
+
+Example:
+```
+ansible all -m ping --inventory-file=hosts
 ```
