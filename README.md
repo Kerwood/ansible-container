@@ -32,3 +32,11 @@ docker run --rm -it \
     -v $(pwd):/ansible/playbooks \
     ansible playbook.yml --inventory=hosts.ini
 ```  
+
+### Create alias
+Here's two examples on alias, that mounts your SSH key inside the container to use for your servers.  
+With these you can use the ansible container as normal commands. The container becomes transparent.
+```
+alias ansible='docker run --rm -it -v $(pwd):/ansible/playbooks -v ~/.ssh:/root/.ssh --entrypoint=ansible ansible'
+alias ansible-playbook='docker run --rm -it -v $(pwd):/ansible/playbooks -v ~/.ssh:/root/.ssh  ansible'
+```
